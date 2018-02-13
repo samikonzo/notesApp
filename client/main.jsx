@@ -1,11 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from './components/App.jsx'
+
 
 ReactDOM.render(
-	<div>
-		<h1>Notes!</h1>
-		<h2>react notes</h2>
-	</div>
-	,
+	<App />,
 	document.getElementById('app')
 )

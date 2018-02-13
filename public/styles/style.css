@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 body{
-	background: yellow;
+	font-family: 'Roboto', sans-serif;
+}
+
+.hidden-text{
+	color: rgba(200,200,200,1);
 }

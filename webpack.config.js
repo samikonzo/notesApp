@@ -21,7 +21,8 @@ module.exports = {
 				test: /\.css$/,
 				use : [
 					'style-loader',
-					'css-loader'
+					'css-loader',
+					'postcss-loader'
 				],
 				exclude: [/node_modules/, /public/]
 			},
@@ -30,6 +31,7 @@ module.exports = {
 				use: [
 					'style-loader',
 					'css-loader',
+					'postcss-loader',
 					'less-loader'
 				],
 				exclude: [/node_modules/, /public/]
@@ -48,5 +50,13 @@ module.exports = {
 				exclude: [/node_modules/, /public/]
 			}
 		]
+	},
+	devServer: {
+		proxy: {
+			'/api' : {
+				target: 'http://localhost:3000',
+				pathRewrite: {'^/api' : ''}
+			}
+		}
 	}
 }
