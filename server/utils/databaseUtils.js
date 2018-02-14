@@ -4,8 +4,8 @@ import '../models/note.js'
 
 const Note = mongoose.model('Note')
 
-export function connectToDatabase(){
-	mongoose.connect(`mongodb://${db.host}:${db.port}/${db.name}`)
+export function tryConnectToDatabase(){
+	return mongoose.connect(`mongodb://${db.host}:${db.port}/${db.name}`)
 }
 
 export function getNotes(){
@@ -25,4 +25,18 @@ export function addNote(data){
 
 export function deleteNote(id){
 	return Note.findById(id).remove()
+}
+
+export function connectToDatabase(){
+	tryConnectToDatabase()
+		.then( 
+			resolve => {
+				l('connected to database')
+			},
+			err => {
+				//l('error  :', err)
+				l('error connect to database')
+				setTimeout(connectToDatabase, 1000)
+			}
+		)
 }

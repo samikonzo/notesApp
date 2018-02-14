@@ -33,7 +33,6 @@ class NoteEditor extends React.Component{
 	}
 
 	handleColorChange(e){
-		l(e.target.key)
 		this.setState({
 			color: e.target.color,
 			colorNum: e.target.key,
