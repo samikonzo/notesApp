@@ -4,5 +4,6 @@
 		"name" : "notes",
 		"host" : "localhost",
 		"port" : "27017"
-	}
+	},
+	"apiPrefixer" : "http://localhost:3000"
 }

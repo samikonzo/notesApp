@@ -3,7 +3,6 @@ var webpack = require('webpack')
 module.exports = {
 	entry:{
 		main : "./client/main.jsx",
-		main2 : "./client/main2.jsx"
 	},
 	output:{
 		path : __dirname + "/public/build",
