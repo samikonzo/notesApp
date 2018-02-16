@@ -24,56 +24,14 @@ class App extends React.Component{
 
 		this.handleNoteAdd = this.handleNoteAdd.bind(this)
 		this.handleNoteDelete = this.handleNoteDelete.bind(this)
-		this.getNotes = this.getNotes.bind(this)
-
-		this.getNotes()
 	}
 
 	handleNoteAdd(note){
-		l(note)
-
-		var that = this
-
-		//add server request
-		var xhr = new XMLHttpRequest()
-		xhr.open('POST', '/api/addNote')
-		xhr.setRequestHeader("Content-type", "application/json");
-		xhr.send(JSON.stringify(note))
-
-		xhr.onload = function(){
-			var item = JSON.parse(this.response)
-			var notes = that.state.notes
-			notes.push(item)
-
-			that.setState({
-				notes: notes
-			})
-		}
 	}
 
 	handleNoteDelete(note){
-		//add server request
-		l(note)
-		var xhr = new XMLHttpRequest()
-		xhr.open('DELETE', '/api/deleteNote' + note.id)
-		xhr.send()
-		note.remove()
-		//note.delete()
 	}
 
-	getNotes(){
-		var xhr = new XMLHttpRequest
-		var that = this
-		xhr.open('GET', '/api/notes')
-		xhr.send()
-
-		xhr.onload = function(){
-			var notes = JSON.parse(this.response)
-			that.setState({
-				notes: notes
-			})
-		}
-	}
 
 	render(){
 		return (
