@@ -52,9 +52,8 @@ module.exports = {
 	},
 	devServer: {
 		proxy: {
-			'/api' : {
+			'/notes' : {
 				target: 'http://localhost:3000',
-				pathRewrite: {'^/api' : ''}
 			}
 		}
 	}

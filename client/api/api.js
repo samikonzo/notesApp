@@ -1,17 +1,17 @@
 import axios from 'axios'
 import { apiPrefixer } from '../../etc/config.json' 
 
-module.exports = {
+export default  {
 	listNotes(){
 		return axios.get(`${apiPrefixer}/notes`)
 	},
 
 	createNote(note){
-		return axios.post(`${apiPrefixer}/notes`, data)
+		return axios.post(`${apiPrefixer}/notes`, note)
 	},
 
 	deleteNote(noteId){
-		return axios.delete(`${apiPrefixer}/notes${noteId}`)
+		return axios.delete(`${apiPrefixer}/notes/${noteId}`)
 	}
 
 }

@@ -5,5 +5,5 @@
 		"host" : "localhost",
 		"port" : "27017"
 	},
-	"apiPrefixer" : "http://localhost:3000"
+	"apiPrefixer" : "http://localhost:8090"
 }

@@ -24,15 +24,19 @@ app.get('/notes', (req, res) => {
 		)
 })
 
-app.post('/addNote', (req, res) => {
+app.post('/notes', (req, res) => {
 	l(req.body)
 	db.addNote(req.body)
 		.then(item => res.send(JSON.stringify(item)))
 })
 
-app.delete('/deleteNote:id', (req, res) =>{
+app.delete('/notes/:id', (req, res) =>{
 	db.deleteNote(req.params.id)
-		.then(() => l('removed'))
+		.then(
+			() => {
+				l('removed')
+				res.send()
+			})
 })
 
 

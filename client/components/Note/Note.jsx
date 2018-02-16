@@ -34,7 +34,7 @@ class Note extends React.Component{
 
 	noteDelete(e){
 		var note = this.note
-		note.id = this.props.note._id
+		note.id = this.props.note.id
 		this.props.onNoteDelete(note)
 	}
 

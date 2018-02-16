@@ -1,2 +1,4 @@
 import { Dispatcher } from 'flux'
-module.exports new Dispatcher()
+const dispatcher = new Dispatcher();
+
+export default new Dispatcher();

@@ -15,7 +15,7 @@ class NotesGrid extends React.Component{
 		 		{	this.props.notes.map((note, i)=> {
 			 			return (
 			 				<Note 
-			 					key={i}
+			 					key={note.id}
 			 					note={note}
 			 					onNoteDelete = {this.props.onNoteDelete}
 			 				/>

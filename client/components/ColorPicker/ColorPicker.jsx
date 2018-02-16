@@ -24,7 +24,6 @@ class ColorPicker extends React.Component{
 
 	handleSelectColor(e){
 		if(this.state.selected == e.target) return
-
 		this.props.onColorClick(e)
 	}
 
@@ -39,26 +38,51 @@ class ColorPicker extends React.Component{
 
 	render(){
 		var selected = this.state.selected
+		var colors = arraySplitBy4(this.state.colors)
 
 		return (
 			<div className="ColorPicker">
-				{this.state.colors.map( (color,i) => {
-					return (	
-						<div className={
-								i == this.state.selected ? "ColorPicker__color ColorPicker__color--selected"
-								: "ColorPicker__color" }
-							key={i} 
-							ref={ el => {
-								if(!this.elements) this.elements = []
-								this.elements.push(el)
-								if(el) el.key = i
-							}}
-							onClick = {this.handleSelectColor}
-						/>)
+				{colors.map((colorsArr, i) => {
+					return(
+						<div className="ColorPicker__group" key={i}>
+							{colorsArr.map((color, j) => {
+
+								var currentColorNum = i*4 + j
+								var isSelected = currentColorNum == selected
+								var currentClassName = isSelected ? "ColorPicker__color ColorPicker__color--selected" : "ColorPicker__color"
+
+								return(
+									<div className={currentClassName}
+										key={currentColorNum}
+										ref={el => {
+											if(!this.elements) this.elements = []
+											this.elements.push(el)
+											if(el) el.key = currentColorNum
+										}}
+										onClick = {this.handleSelectColor}
+									/>
+								)
+							})}
+						</div>
+					)
 				})}
+
+
 			</div>
 		)
 	}
 }
+
+function arraySplitBy4(arr){
+	var arrCopy = arr.slice()
+	var resultArr = [];
+
+	while(arrCopy.length){
+		resultArr.push(arrCopy.splice(0,4))
+	}
+
+	return resultArr
+}
+
 
 module.exports = ColorPicker

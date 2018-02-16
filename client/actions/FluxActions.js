@@ -4,16 +4,19 @@ import api from '../api/api.js'
 
 const NoteActions = {
 	loadNotes(){
+		l('loadNotes : ')
 		Dispatcher.dispatch({
 			type: Constants.LOAD_NOTES_REQUEST
 		})
 
-		api.listNote()
+		api.listNotes()
 			.then(({ data }) => {
 				Dispatcher.dispatch({
 					type: Constants.LOAD_NOTES_SUCCESS,
 					notes: data
 				})
+
+				l(data)
 			}) 
 			.catch(err => {
 				Dispatcher.dispatch({
@@ -27,9 +30,10 @@ const NoteActions = {
 		api.createNote(note)
 			.then(() => this.loadNotes())
 			.catch(err => l(err))
-	}
+	},
 
 	deleteNote(noteId){
+		l('noteId : ', noteId)
 		api.deleteNote(noteId)
 			.then(()=>{
 				this.loadNotes()
@@ -37,3 +41,6 @@ const NoteActions = {
 			.catch(err => l(err))
 	}
 }
+
+
+export default NoteActions

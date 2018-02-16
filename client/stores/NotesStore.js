@@ -33,7 +33,7 @@ const TasksStore = Object.assign({}, EventEmitter.prototype, {
 
 	addChangeListener(f){
 		this.on(CHANGE_EVENT, f)
-	}
+	},
 
 	removeChangeListener(f){
 		this.removeListener(CHANGE_EVENT,f)
@@ -54,13 +54,21 @@ Dispatcher.register(function(action){
 			_notes = action.notes.map( formatNote )
 			_loadingError = null
 			
-			TasksStore.emitChange()
+			TasksStore.emitChange() 
 			break
 		}
 
 		case Constants.LOAD_NOTES_FAIL : {
-			
+			_loadingError = action.error
+
+			TasksStore.emitChange()
 			break
+		}
+
+		default: {
+			console.log(' No such handler')
 		}
 	}
 })
+
+export default TasksStore
