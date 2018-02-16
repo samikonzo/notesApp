@@ -1,10 +1,11 @@
 .ColorPicker{
 	//border:1px solid;
 	flex-grow: 1;
-	min-height: 52px;
+	min-height: 65px;
 	box-sizing: border-box;
 
 	display: flex;
+	flex-flow: row wrap;
 	justify-content: space-around;
 	align-items: center;
 
@@ -12,15 +13,16 @@
 		display: inline-block;
 		width: 40px;
 		height: 40px;
-		//margin: 3px;
+		margin: 5px;
 		border-radius: 50%;
 		border: 1px solid grey;
 		transition: .5s;
+		
 
 		&--selected{
 			width: 50px;
 			height: 50px;
-			//border: 1px solid red;
+			box-shadow: -5px 5px 5px rgba(0,0,0,0.2);
 		}
 	}
 }
